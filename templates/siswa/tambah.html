@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %} Tambah Data Siswa {% endblock %}
+
+{% block style %}
+<style>
+    .input-group-text {
+        width: 45px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="clearfix">
+        <h1 class="h3 mb-4 text-grey-800 float-left">Tambah Data Siswa</h1>
+        <a href="{{ url_for('siswa') }}" class="btn btn-secondary btn-sm float-right"><i class="fas fa-reply"></i> Kembali</a>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <span class="text-primary"><strong>Silakan isi data di bawah ini</strong></span>
+                </div>
+                <div class="card-body">
+                    <form action="" method="POST">
+                        <!-- Input NIS -->
+                        <div class="form-group">
+                            <label for="nis">NIS Siswa</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">#</div>
+                                </div>
+                                <input type="number" id="nis" class="form-control" placeholder="Masukkan NIS" name="nis" autocomplete="off" required="required">
+                            </div>
+                        </div>
+                        <!-- Input Nama -->
+                        <div class="form-group">
+                            <label for="nama">Nama Siswa</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-user"></i></div>
+                                </div>
+                                <input type="text" id="nama" class="form-control" placeholder="Masukkan Nama" name="nama" autocomplete="off" required="required">
+                            </div>
+                        </div>
+                        <!-- Input Tempat Lahir -->
+                        <div class="form-group">
+                            <label for="tempat_lahir">Tempat Lahir Siswa</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-globe"></i></div>
+                                </div>
+                                <input type="text" id="tempat_lahir" class="form-control" placeholder="Masukkan Tempat Lahir" name="tempat_lahir" autocomplete="off" required="required">
+                            </div>
+                        </div>
+                        <!-- Input Tanggal Lahir -->
+                        <div class="form-group">
+                            <label for="tanggal_lahir">Tanggal Lahir Siswa</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-calendar-alt"></i></div>
+                                </div>
+                                <input type="date" id="tanggal_lahir" class="form-control" placeholder="Masukkan Nama" name="tanggal_lahir" autocomplete="off" required="required">
+                            </div>
+                        </div>
+                        <!-- Input Alamat -->
+                        <div class="form-group">
+                            <label for="alamat">Alamat Siswa</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-calendar-alt"></i></div>
+                                </div>
+                                <textarea name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat" required="required" autocomplete="off"></textarea>
+                            </div>
+                        </div>
+                        <!-- Button Submit -->
+                        <div class="from-group">
+                            <button type="submit" class="btn btn-success btn-sm" name="simpan"><i class="fas fa-save"></i> Simpan</button>
+                            <button type="reset" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Batal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

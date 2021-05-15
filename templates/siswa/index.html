@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %} siswa {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="clearfix">
+        <h1 class="h3 mb-4 text-gray-800 float-left">Data Siswa</h1>
+        <a href="{{ url_for('siswaTambah') }}" class="btn btn-success btn-sm float-right"><i class="fas fa-plus"></i> Tambah Data</a>
+    </div>
+    <hr>
+    <!-- Messeage -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages -%}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button " class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <!-- End Messeage -->
+    <div class="card">
+        <div class="card-header">Daftar Siswa</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>NIS</th>
+                            <th>Nama</th>
+                            <th>Tempat, Tanggal Lahir</th>
+                            <th>Alamat</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for siswa in data_siswa %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ siswa.nis }}</td>
+                            <td>{{ siswa.nama }}</td>
+                            <td>{{ siswa.tempat_lahir }}, {{ siswa.tanggal_lahir }}</td>
+                            <td>{{ siswa.alamat }}</td>
+                            <td>
+                                <a href="/siswa/ubah/{{ siswa.nis }}" class="btn btn-sm btn-success"><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Ubah</a>
+                                <a href="/siswa/hapus/{{ siswa.nis }}" class="btn btn-sm btn-danger" onclick="return confirm('apakah anda yakin?')"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;Hapus</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
