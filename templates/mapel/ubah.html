@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %} Tambah Data Mata Pelajaran {% endblock %}
+
+{% block style %}
+<style>
+    .input-group-text {
+        width: 45px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="clearfix">
+        <h1 class="h3 mb-4 text-grey-800 float-left">Ubah Data Mata Pelajaran</h1>
+        <a href="{{ url_for('mapel') }}" class="btn btn-secondary btn-sm float-right"><i class="fas fa-reply"></i> Kembali</a>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <span class="text-primary"><strong>Silakan isi data di bawah ini</strong></span>
+                </div>
+                <div class="card-body">
+                    <form action="{{ url_for('ubahMapel') }}" method="POST">
+                        <!-- Input Mata Pelajaran -->
+                        <div class="form-group">
+                            <label for="nama_mapel">Mata Pelajaran</label> 
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-book"></i></div>
+                                </div>
+                                <input type="hidden" name="id" value="{{ data_mapel.id }}">
+                                <input type="text" id="nama_mapel" class="form-control" placeholder="Masukkan Mata Pelajaran" name="nama_mapel" autocomplete="off" required="required" value="{{ data_mapel.nama_pel }}">
+                            </div>
+                        </div>
+                        <!-- Input Jumlah Jam -->
+                        <div class="form-group">
+                            <label for="jumlah_jam">Jumlah Jam</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-clock"></i></div>
+                                </div>
+                                <input type="number" id="jumlah_jam" class="form-control" placeholder="Masukkan Jumlah Jam Mata Pelajaran" name="jumlah_jam" autocomplete="off" required="required" value="{{ data_mapel.jumlah_jam }}">
+                            </div>
+                        </div>
+                        <!-- Input NIP Guru -->
+                        <div class="form-group">
+                            <label for="guru_pengampu">NIP Guru Pengampu</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-user"></i></div>
+                                </div>
+                                <input type="text" id="guru_pengampu" class="form-control" placeholder="Masukkan NIP Guru Pengampu" name="guru_pengampu" autocomplete="off" required="required" value="{{ data_mapel.guru_nip }}">
+                            </div>
+                        </div>
+                        <!-- Input Ruangan -->
+                        <div class="form-group">
+                            <label for="ruangan">Ruangan</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fas fa-building"></i></div>
+                                </div>
+                                <input type="text" id="ruangan" class="form-control" placeholder="Masukkan Ruangan" name="ruangan" autocomplete="off" required="required" value="{{ data_mapel.ruangan }}">
+                            </div>
+                        </div>
+                        <!-- Button Submit -->
+                        <div class="from-group">
+                            <button type="submit" class="btn btn-primary btn-sm" name="simpan"><i class="fas fa-save"></i> Simpan</button>
+                            <button type="reset" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Batal</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

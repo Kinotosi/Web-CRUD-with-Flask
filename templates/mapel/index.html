@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %} Mata Pelajaran {% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="clearfix">
+        <h1 class="h3 mb-4 text-gray-800 float-left">Mata Pelajaran</h1>
+        <a href="{{ url_for('mapelTambah') }}" class="btn btn-success btn-sm float-right"><i class="fas fa-plus"></i> Tambah Data</a>
+    </div>
+    <hr>
+    <!-- Messeage -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages -%}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button " class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <!-- End Messeage -->
+    <div class="card">
+        <div class="card-header">Daftar Mata Pelajaran</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Mata Pelajaran</th>
+                            <th>Guru Pengampu</th>
+                            <th>Jumlah Jam</th>
+                            <th>Ruangan</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for guru, mapel in data_mapel %}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            <td>{{ mapel.nama_pel }}</td>
+                            <td>{{ guru.nama }}</td>
+                            <td>{{ mapel.jumlah_jam }} jam Pelajaran ({{ mapel.jumlah_jam * 45}} Menit)</td>
+                            <td>{{ mapel.ruangan }}</td>
+                            <td>
+                                <a href="/mapel/ubah/{{ mapel.id }}" class="btn btn-sm btn-success"><i class="fas fa-pencil-alt"></i>&nbsp;&nbsp;Ubah</a>
+                                <a href="/mapel/hapus/{{ mapel.id }}" class="btn btn-sm btn-danger" onclick="return confirm('apakah anda yakin?')"><i class="fas fa-trash-alt"></i>&nbsp;&nbsp;Hapus</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
