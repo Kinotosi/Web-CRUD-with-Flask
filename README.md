@@ -11,3 +11,5 @@ FLASK_APP=app.py FLASK_DEBUG=1 python -m flask run
 http://localhost:5000
 ```
 ## Preview
+![alt text](https://github.com/Kinotosi/Web-CRUD-with-Flask/blob/main/preview/sekolah1.png)
+![alt text](https://github.com/Kinotosi/Web-CRUD-with-Flask/blob/main/preview/sekolah2.png)
